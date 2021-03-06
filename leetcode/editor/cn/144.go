@@ -82,19 +82,19 @@ func getVals(root *TreeNode, vals *[]int) {
 
 
 //preorderTraversal1 第二种解法，不另起函数实现递归
-var vals = make([]int, 0)
+var vals144 = make([]int, 0)
 func preorderTraversal1(root *TreeNode) []int {
 	if root == nil {
-		return vals
+		return vals144
 	}
-	vals = append(vals, root.Val)
+	vals144 = append(vals144, root.Val)
 	if root.Left != nil {
 		preorderTraversal(root.Left)
 	}
 	if root.Right != nil {
 		preorderTraversal(root.Right)
 	}
-	return vals
+	return vals144
 }
 
 
