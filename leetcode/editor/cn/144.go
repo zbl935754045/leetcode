@@ -63,28 +63,58 @@ package main
  *     Right *TreeNode
  * }
  */
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
-
+//preorderTraversal 第一种解法
 func preorderTraversal(root *TreeNode) []int {
-	num := make([]int, 0)
+	vals := make([]int, 0)
 	if root == nil {
-		 return num
+		return vals
 	}
-	dfs(root, &num)
-	return nil
+	getVals(root, &vals)
+	return vals
+}
+func getVals(root *TreeNode, vals *[]int) {
+	if root != nil {
+		*vals = append(*vals, root.Val)
+		getVals(root.Left, vals)
+		getVals(root.Right, vals)
+	}
 }
 
-func dfs(root *TreeNode, num *[]int) {
-	if root != nil {
-		*num = append(*num, root.Val)
-		dfs(root.Left, num)
-		dfs(root.Right, num)
+
+//preorderTraversal1 第二种解法，不另起函数实现递归
+var vals = make([]int, 0)
+func preorderTraversal1(root *TreeNode) []int {
+	if root == nil {
+		return vals
 	}
+	vals = append(vals, root.Val)
+	if root.Left != nil {
+		preorderTraversal(root.Left)
+	}
+	if root.Right != nil {
+		preorderTraversal(root.Right)
+	}
+	return vals
 }
+
+
+//preorderTraversal2 第三种解法，变量函数实现
+func preorderTraversal2(root *TreeNode) (vals []int) {
+	var preorder func(*TreeNode)
+	preorder = func(node *TreeNode) {
+		if node == nil {
+			return
+		}
+		vals = append(vals, node.Val)
+		preorder(node.Left)
+		preorder(node.Right)
+	}
+	preorder(root)
+	return
+}
+
+
+
 
 //leetcode submit region end(Prohibit modification and deletion)
 

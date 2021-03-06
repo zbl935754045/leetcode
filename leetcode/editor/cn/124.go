@@ -45,8 +45,23 @@ package main
  * }
  */
 
+var num int
 func maxPathSum(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+	left := max(0, maxPathSum(root.Left))
+	right := max(0, maxPathSum(root.Right))
+	num = max(num, left + right + root.Val)
+	return max(left, right) + root.Val
+}
 
+func max(a, b int) int {
+	if a > b {
+		return a
+	} else {
+		return b
+	}
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
