@@ -98,21 +98,6 @@ func preorderTraversal1(root *TreeNode) []int {
 }
 
 
-//preorderTraversal2 第三种解法，变量函数实现
-func preorderTraversal2(root *TreeNode) (vals []int) {
-	var preorder func(*TreeNode)
-	preorder = func(node *TreeNode) {
-		if node == nil {
-			return
-		}
-		vals = append(vals, node.Val)
-		preorder(node.Left)
-		preorder(node.Right)
-	}
-	preorder(root)
-	return
-}
-
 
 
 
