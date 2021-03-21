@@ -60,9 +60,9 @@ package main
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
  * Definition for singly-linked list.
- * type ListNode struct {
+ * type Node struct {
  *     Val int
- *     Next *ListNode
+ *     Next *Node
  * }
  */
 func detectCycle(head *ListNode) *ListNode {
